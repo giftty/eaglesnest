@@ -1,9 +1,49 @@
-<div class="formbold-main-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="/image/logo.jpg">
+  <title>Espees Eagles Nest Checklist</title>
+  <style>
+  .image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  /* Background layer */
+  background-image: url('/image/logo.jpg');
+  background-size: 1000% 1000%;
+  background-position: center;
+}
+
+/* Foreground image */
+.image-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 10px;
+}
+  </style>
+</head>
+<body>
+  
+</body>
+</html>
+<div class="formbold-main-wrapper" >
   <!-- Author: FormBold Team -->
   <!-- Learn More: https://formbold.com -->
   <div class="formbold-form-wrapper">
-     <div style="margin-bottom: 2rem;">
-                <h1 class="form-title" style="margin-bottom: 20px;color:#6A64F1">Espees Eagles Nest Checklist</h1>
+   <div class="image-container">
+  <img src="/image/logo.jpg" alt="Clear Image">
+</div>
+     <div style="margin-bottom: 2rem;padding: 20px;">
+                <h1 class="form-title" style="margin-bottom: 20px;color:#6A64F1;margin-top:10px;">Espees Eagles Nest Checklist</h1>
                 <!-- <p class="form-desc" style="font-size: 9px;">
                    Score Definition 0 Not Available / Not Provided 1 Available but Incomplete or Poor Quality 2 Complete but Requires Clarification/Improvement 3 Fully Available, Clear, and High Quality
                 </p> -->
@@ -29,11 +69,11 @@
           <td>Fully Available, Clear, and High Quality</td>
         </tr>
       </table>
-            </div>
+    </div>
 
 
     
-    <form action="https://formbold.com/s/FORM_ID" method="POST">
+    <form action="https://formbold.com/s/FORM_ID" method="POST" style="padding: 20px;">
         <div class="formbold-steps">
             <ul>
                 <li class="formbold-step-menu1 step-menu active">
@@ -233,13 +273,15 @@
     align-items: center;
     justify-content: center;
     padding: 48px;
+    background-color: #f3f3f3;
   }
 
   .formbold-form-wrapper {
     margin: 0 auto;
-    max-width: 700px;
+    max-width: 750px;
     width: 100%;
     background: white;
+    border-radius: 13px 13px 0px 0px;
   }
 
   .formbold-steps {
