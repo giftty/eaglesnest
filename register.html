@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" type="image/x-icon" href="image/logo.jpg">
+  <title>Espees Eagles Nest Checklist</title>
+   <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Inter", sans-serif;
+  }
+  .formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     padding-top: 100px;
+    background-color: #e8fbea;
+  }
+
+  .formbold-form-wrapper {
+    margin: 0 auto;
+    /* max-width: 750px; */
+    /* width: 70%; */
+    background: white;
+    /* border-radius: 13px 13px 0px 0px; */
+  }
+
+  .formbold-steps {
+    padding-bottom: 18px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid #DDE3EC;
+  }
+  .formbold-steps ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  .formbold-steps li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #536387;
+  }
+  .formbold-steps li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DDE3EC;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #536387;
+  }
+  .formbold-steps li.active {
+    color: #07074D;;
+  }
+  .formbold-steps li.active span {
+    background: #054127;
+    color: #FFFFFF;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 22px;
+  }
+  .formbold-input-flex > div {
+    width: 50%;
+  }
+  .formbold-form-input {
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #DDE3EC;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #054127;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #07074D;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-form-confirm {
+    border-bottom: 1px solid #DDE3EC;
+    padding-bottom: 35px;
+  }
+  .formbold-form-confirm p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    margin-bottom: 22px;
+    width: 75%;
+  }
+  .formbold-form-confirm > div {
+    display: flex;
+    gap: 15px;
+  }
+
+  .formbold-confirm-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 0.5px solid #DDE3EC;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #536387;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all .3s ease-in-out;
+  }
+  .formbold-confirm-btn {
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.12);
+  }
+  .formbold-confirm-btn.active {
+    background: #054127;
+    color: #FFFFFF;
+  }
+
+  .formbold-form-step-1,
+  .formbold-form-step-2,
+  .formbold-form-step-3, .formbold-form-step-4,.formbold-form-step-5,.formbold-form-step-6 {
+    display: none;
+  }
+  .formbold-form-step-1.active,
+  .formbold-form-step-2.active,
+  .formbold-form-step-3.active, .formbold-form-step-4.active,.formbold-form-step-5.active,
+  .formbold-form-step-6.active {
+    display: block;
+  }
+
+  .formbold-form-btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 25px;
+    margin-top: 25px;
+  }
+  .formbold-back-btn {
+    cursor: pointer;
+    background: #FFFFFF;
+    border: none;
+    color: #07074D;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: none;
+  }
+  .formbold-back-btn.active {
+    display: block;
+  }
+  .formbold-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 10px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #054127;
+    color: white;
+    cursor: pointer;
+  }
+  .formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+.formbold-img {
+    margin-bottom: 40px;
+  }
+
+  .formbold-input-flex {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .formbold-input-flex > div {
+    width: 50%;
+  }
+  .formbold-form-input {
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #dde3ec;
+    background: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+  }
+  .formbold-form-input:focus {
+    border-color: #054127;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+  }
+  .formbold-form-label {
+    color: #536387;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .formbold-mb-5 {
+    margin-bottom: 20px;
+  }
+  .formbold-radio-flex {
+    display: flex;
+    margin-left: 30px;
+    /* flex-direction: column; */
+    gap: 10px;
+  }
+  .formbold-radio-label {
+    font-size: 14px;
+    line-height: 24px;
+    color: #07074d;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .formbold-input-radio {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .formbold-radio-checkmark {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #ffffff;
+    border: 1px solid #dde3ec;
+    border-radius: 50%;
+  }
+  .formbold-radio-label
+    .formbold-input-radio:checked
+    ~ .formbold-radio-checkmark {
+    background-color: #054127;
+  }
+  .formbold-radio-checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  .formbold-radio-label
+    .formbold-input-radio:checked
+    ~ .formbold-radio-checkmark:after {
+    display: block;
+  }
+
+  .formbold-radio-label .formbold-radio-checkmark:after {
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+  }
+
+   table {
+            border-collapse: collapse;
+            width: 70%;
+            margin-top: 10px;
+        }
+        td {
+            font-size: 12px;
+            padding:4px 30px ;
+            text-align: left;
+        }
+     ul.option{
+      display: inline;
+     }   
+
+
+     @media (max-width:400px) {
+         .formbold-steps li span {
+          border-radius: 50%;
+          width: 19px;
+          height: 19px;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: normal;
+          color: #536387;
+        }
+
+     .formbold-main-wrapper {
+        padding: 0px;
+        background-color: #f3f3f3;
+        width: 100%;
+      }
+      .formbold-steps li {
+        white-space: nowrap;
+        font-size: 9px;
+        line-height:10px;
+        gap:5px;
+        color: #536387;
+    }
+    .formbold-steps ul {
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+      h1{
+        font-size: 19px;
+      }
+     }
+  .image-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  /* Background layer */
+  background-image: url('image/logo.jpg');
+  background-size: 1000% 1000%;
+  background-position: center;
+  filter: brightness(110%);
+}
+
+/* Foreground image */
+.image-container img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 10px;
+}
+.navbar .navbar-nav .nav-link {   
+    color: #054127  !important;
+}
+  </style>
+</head>
+<body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
+                <a href="index.html" class="navbar-brand p-0">
+                    <h1 class="m-0 text-primary">EaglesNest</h1>
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="index.html#about" class="nav-item nav-link">About</a>
+                        
+                        <a href="index.html#contact_us" class="nav-item nav-link">Contact</a>
+                    </div>
+                   
+            </nav>
+  <div class="formbold-main-wrapper" >
+  <!-- Author: FormBold Team -->
+  <!-- Learn More: https://formbold.com -->
+  <div class="formbold-form-wrapper">
+   <!-- <div class="image-container">
+  <img src="image/logo.jpg" alt="Clear Image">
+</div> -->
+     <div style="margin-bottom: 2rem;padding: 20px;">
+                <!-- <h1 class="form-title" style="margin-bottom: 20px;color:#078d14;margin-top:10px;">Espees Eagles Nest Checklist</h1> -->
+                <p class="form-desc " style="font-size: 14px;color: #054127;">
+                 Thank you for your interest in Eagles Nest Innovative Ventures Accelerator Program. As you fill out this form, we encourage you to do so with complete honesty and integrity, reflecting the character of Christ we uphold. Your transparency allows us to better understand your vision and determine how we can best partner with you to achieve your God-given potential and fulfill your divine purpose. We are looking for entrepreneurs who operate with uncompromising righteousness, and your honesty in this application is the first step in building that foundation.
+                </p>
+      <table >
+        <tr>
+          <td style="font-weight: bold;">Score</td>
+          <td style="font-weight: bold;">Definition</td>
+        </tr>
+        <tr style="border-bottom:solid 1px red">
+          <td>0</td>
+          <td>Not Available / Not Provided</td>
+        </tr>
+        <tr style="border-bottom:solid 1px rgb(123, 123, 3)">
+          <td>1</td>
+          <td>Available but Incomplete or Poor Quality</td>
+        </tr>
+        <tr style="border-bottom:solid 1px brown">
+           <td >2</td>
+          <td>Complete but Requires Clarification/Improvement</td>
+        </tr>
+        <tr style="border-bottom:solid 1px green">
+          <td>3</td>
+          <td>Fully Available, Clear, and High Quality</td>
+        </tr>
+      </table>
+    </div>
+
+
+    
+    <form action="" id="check_form" style="padding: 20px;" class="col-lg-9 mx-auto">
+        <div class="formbold-steps">
+            <ul>
+                <li class="formbold-step-menu1 step-menu active">
+                    <span>1</span>
+                    Step 1
+                </li>
+                <li class="formbold-step-menu2 step-menu">
+                    <span>2</span>
+                    Step 2
+                </li>
+                <li class="formbold-step-menu3 step-menu">
+                    <span>3</span>
+                    Step 3
+                </li>
+                <li class="formbold-step-menu4 step-menu">
+                    <span>4</span>
+                    Step 4
+                </li>
+                 <li class="formbold-step-menu3 step-menu">
+                    <span>5</span>
+                    Step 5
+                </li>
+                <li class="formbold-step-menu4 step-menu">
+                    <span>6</span>
+                    Step 6
+                </li>
+            </ul>
+        </div>
+
+        <div class="formbold-form-step-1 form-step active">
+          <h3 style="margin-bottom: 7px;">Personal Details.</h3>
+          <hr/><br>
+          <div class="formbold-input-flex">
+            
+            <div>
+                <label for="firstname" class="formbold-form-label"> First name </label>
+                <input
+                type="text"
+                name="firstname"
+                placeholder="Andrio"
+                id="firstname"
+                class="formbold-form-input"
+                />
+            </div>
+            <div>
+                <label for="lastname" class="formbold-form-label"> Last name </label>
+                <input
+                type="text"
+                name="lastname"
+                placeholder="Dolee"
+                id="lastname"
+                class="formbold-form-input"
+                />
+            </div>
+          </div>
+  
+          <div class="formbold-input-flex">
+              <div>
+                  <label for="dob" class="formbold-form-label"> Kingschat  </label>
+                  <input 
+                  type="text" 
+                  placeholder="MMYUIK"
+                  name="kingschat" 
+                  id="dob" 
+                  class="formbold-form-input"
+                  />
+              </div>
+              <div>
+                  <label for="email" class="formbold-form-label"> Email Address </label>
+                  <input
+                  type="email"
+                  name="email"
+                  placeholder="example@mail.com"
+                  id="email"
+                  class="formbold-form-input"
+                  />
+              </div>
+          </div>
+           <div class="formbold-input-flex">
+             <div>
+              <label for="address" class="formbold-form-label"> Address </label>
+              <input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Flat 4, 24 Castle Street, Perth, PH1 3JY"
+              class="formbold-form-input"
+              />
+          </div>
+           
+             <div>
+                  <label for="business name"  class="formbold-form-label"> Business name  </label>
+                  <input 
+                  type="text" 
+                  placeholder="Omia Homes"
+                   name="business_name"
+                  id="business_name" 
+                  class="formbold-form-input"
+                  />
+              </div>
+           </div>
+          <div>
+              <label for="address" class="formbold-form-label">Business Address </label>
+              <input
+              type="text"
+              name="business_address"
+              id="business_address"
+              placeholder="Flat 4, 24 Castle Street, Perth, PH1 3JY"
+              class="formbold-form-input"
+              />
+             </div>
+        </div>
+
+        <div class="formbold-form-step-2 form-step">
+         <div>
+            
+        <div class="formbold-mb-5">
+          <h3>Investment History/Corporate Details section.</h3>
+        <hr/>
+          </div>
+        </div>
+       </div>
+       <div class="formbold-form-step-3 form-step">
+         <div>
+            
+        <div class="formbold-mb-5">
+          <h3>Commercial Contracts/Financial History</h3>
+        <hr/>
+          </div>
+        </div>
+       </div>
+        
+       <div class="formbold-form-step-4 form-step">
+         <div>
+            
+        <div class="formbold-mb-5">
+          <h3>Team & Shareholders/Financial Projections</h3>
+        <hr/>
+          </div>
+        </div>
+       </div>
+        
+       <div class="formbold-form-step-5 form-step">
+         <div>
+            
+        <div class="formbold-mb-5">
+          <h3>Products & Sales/Market & Competition</h3>
+        <hr/>
+          </div>
+        </div>
+       </div>
+        
+        <div class="formbold-form-step-6 form-step">
+         <div>
+            
+        <div class="formbold-mb-5">
+          <h3>Legal & IP</h3>
+        <hr/>
+          </div>
+        </div>
+       </div>
+         
+        <div class="formbold-form-btn-wrapper">
+          <button class="formbold-back-btn">
+            Back
+          </button>
+
+          <button class="formbold-btn">
+              Next Step
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_1675_1807)">
+              <path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_1675_1807">
+              <rect width="16" height="16" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+          </button>
+        </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+
+ <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+<script src="main.js"></script>
+<script>
+  const stepMenuOne = document.querySelector('.formbold-step-menu1')
+  const stepMenuTwo = document.querySelector('.formbold-step-menu2')
+  const stepMenuThree = document.querySelector('.formbold-step-menu3')
+  const stepMenuFour = document.querySelector('.formbold-step-menu4')
+
+  const stepOne = document.querySelector('.formbold-form-step-1')
+  const stepTwo = document.querySelector('.formbold-form-step-2')
+  const stepThree = document.querySelector('.formbold-form-step-3')
+  const stepFour = document.querySelector('.formbold-form-step-4')
+
+  const formSubmitBtn = document.querySelector('.formbold-btn')
+  const formBackBtn = document.querySelector('.formbold-back-btn')
+
+  var arrKeys = Object.keys(dueDiligenceData)
+  console.log(arrKeys)
+  var cnt =0
+
+    dueDiligenceData[arrKeys[0]].forEach(function(itm){
+
+      var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+    
+       document.querySelector(`.formbold-form-step-2`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     dueDiligenceData[arrKeys[1]].forEach(function(itm){
+
+       var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+
+       document.querySelector(`.formbold-form-step-2`).insertAdjacentHTML("beforeend",htmldata)
+    })
+   
+     dueDiligenceData[arrKeys[2]].forEach(function(itm){
+
+    var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+       
+       document.querySelector(`.formbold-form-step-3`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     dueDiligenceData[arrKeys[3]].forEach(function(itm){
+
+      var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+
+       document.querySelector(`.formbold-form-step-3`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     dueDiligenceData[arrKeys[4]].forEach(function(itm){
+
+      var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+       
+       document.querySelector(`.formbold-form-step-4`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     dueDiligenceData[arrKeys[5]].forEach(function(itm){
+
+     var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+
+       document.querySelector(`.formbold-form-step-4`).insertAdjacentHTML("beforeend",htmldata)
+    })
+    
+     dueDiligenceData[arrKeys[6]].forEach(function(itm){
+
+     var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+       
+       document.querySelector(`.formbold-form-step-5`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     dueDiligenceData[arrKeys[7]].forEach(function(itm){
+
+      var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+
+       document.querySelector(`.formbold-form-step-5`).insertAdjacentHTML("beforeend",htmldata)
+    })
+     dueDiligenceData[arrKeys[8]].forEach(function(itm){
+
+     var htmldata = ' <label for="qus'+cnt+'" class="formbold-form-label"><div style="display: flex;align-items: center;margin-top:40px"><span> '+(++cnt)+'. &nbsp; &nbsp; </span><span>'+ itm +'<br><label style="font-size: 12px;">Select one option.</label></span></div></label><div class="formbold-radio-flex"><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'" value="0"/>0<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-1"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-1" value="1"/>1<span class="formbold-radio-checkmark"></span></label></div><div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-2"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-2" value="2"/>2<span class="formbold-radio-checkmark"></span></label></div> <div class="formbold-radio-group"><label class="formbold-radio-label" for="qus'+cnt+'-3"><input class="formbold-input-radio" type="radio" name="qus'+cnt+'" id="qus'+cnt+'-3" value="3"/>3<span class="formbold-radio-checkmark"></span></label></div></div>'
+       
+       document.querySelector(`.formbold-form-step-6`).insertAdjacentHTML("beforeend",htmldata)
+    })
+
+     
+   var steps = document.querySelectorAll(".step-menu")
+   var pages = document.querySelectorAll(".form-step")
+   var activeIdx 
+  formSubmitBtn.addEventListener("click",async function(event) {
+    event.preventDefault()
+     console.log(inputValidation())
+     console.log('________________')
+    if(inputValidation()){
+      return;
+    }
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+   if(activeIdx==steps.length-2)
+   {
+     var formData =new FormData(document.getElementById('check_form'))
+     var score=0
+     for([key,value] of formData.entries()){
+      if(key.indexOf('qus')!= -1){
+        score=score+parseInt(value)
+      }
+     }
+     formData.append("score",score)
+     console.log(formData)
+      try {
+        const response = await fetch('backend.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.text(); // Or .json() if PHP returns JSON
+        if(result.indexOf('success') != -1){
+          document.getElementById('check_form').insertAdjacentHTML("afterbegin","<div class='alert alert-success py-4 px-2 rounded-lg' > Your registration Completed successfully thank you!<br/></div>") ;
+        }else{
+           document.getElementById('check_form').insertAdjacentHTML("afterbegin","<div class='alert alert-danger py-4 px-2 rounded-lg'>"+result+"</div>") ;
+        }
+     
+      //   document.getElementById('check_form').reset(); // Optional: clear form after submission
+    } catch (error) {
+       console.log(error)
+       document.getElementById('check_form').insertAdjacentHTML("afterbegin","<div class='alert alert-danger py-4 px-2 rounded-lg'> An error occurred: please try again later.</div>") ;
+    }
+     return
+   }
+   document.querySelector(".formbold-back-btn").style.display ="block"
+   if(activeIdx==steps.length-3){
+     formSubmitBtn.textContent = 'Submit'
+   }
+   for(var i=0;i<=steps.length-1;i++){
+    if(steps[i].classList.toString().indexOf('active')!= -1){
+      activeIdx=i
+      console.log(steps[i].classList.toString())
+    }
+    steps[i].classList= 'formbold-step-menu'+(i+1)+' step-menu'
+    pages[i].classList= 'formbold-form-step-'+(i+1)+' form-step'
+   }
+   steps[activeIdx+1].classList = 'formbold-step-menu'+(activeIdx+1)+' step-menu active'
+   pages[activeIdx+1].classList= 'formbold-form-step-'+(activeIdx+1)+' form-step active'
+    
+  })
+   document.querySelector(".formbold-back-btn").addEventListener('click',function(e){
+     event.preventDefault()
+     window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+    if(activeIdx==0)
+   {
+     return
+   }
+   if(formSubmitBtn.innerText.indexOf('Submit')!= -1)
+   formSubmitBtn.innerHTML='Next Step <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1675_1807)"><path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white"/></g><defs><clipPath id="clip0_1675_1807"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>'
+   for(var i=0;i<=steps.length-1;i++){
+    if(steps[i].classList.toString().indexOf('active')!= -1){
+      activeIdx=i
+    }
+    steps[i].classList= 'formbold-step-menu'+(i+1)+' step-menu'
+    pages[i].classList= 'formbold-form-step-'+(i+1)+' form-step'
+   }
+   steps[activeIdx-1].classList = 'formbold-step-menu'+(activeIdx-1)+' step-menu active'
+   pages[activeIdx-1].classList= 'formbold-form-step-'+(activeIdx-1)+' form-step active'
+   })  
+  
+  function inputValidation(){
+    var notvalid = false
+    var inputs = document.querySelectorAll("input")
+    inputs.forEach(function(inp){
+      if(inp.type=='text'&&inp.value.length<2){
+         inp.style.border ='solid 1.2px red'
+         notvalid = true
+      }else if(inp.type=='email'&& !isValidEmail(inp.value)){
+          inp.style.border ='solid 1.2px red'
+          notvalid = true
+        
+      }else{
+         inp.style.border ='1px solid #dde3ec';
+      }
+    })
+     return notvalid
+   
+  }
+  function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+</script>

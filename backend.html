@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espees eaglenest backend</title>
+    <link rel="stylesheet" type="text/css" href="./Table V03_files/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/util.css">
+	<link rel="stylesheet" type="text/css" href="./Table V03_files/main.css">
+     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
+    <style>
+        .dt-input{
+            border: 1px solid black !important;
+            border-radius: 13px !important;
+            padding: 5px !important;
+            margin: 4px !important;
+        }
+        .dt-input:focus {
+        border: 1px solid black !important;
+        box-shadow: none !important;
+       }
+       .dt-buttons {
+        margin-bottom: 10px;
+        display: block !important;
+       }
+    </style>
+</head>
+<body>
+    <div style="padding-left: 35px;">
+         <h3 class="form-title" style="margin-bottom: 20px;color:black;font-weight: 600;margin-top:30px;">Espees Eagles Nest Checklist Backend</h3>
+    </div>
+    <div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1">
+					<table data-vertable="ver1" id="table1">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column1" data-column="column1">Name</th>
+								<th class="column100 column2" data-column="column2">Email</th>
+								<th class="column100 column3" data-column="column3">Address</th>
+                                <th class="column100 column6" data-column="column6">Kingschat ID</th>
+								<th class="column100 column4" data-column="column4">Business name</th>
+								<th class="column100 column5" data-column="column5">Business Address</th>
+								<th class="column100 column5" data-column="column5">Score</th>
+                                <th class="column100 column5" data-column="column5">Readiness Description</th>
+                                <th class="column100 column5" data-column="column5">Likely Investment Stage</th>
+                                <th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+     <script src="Table V03_files/jquery-3.2.1.min.js"></script>  
+     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.3.2/b-3.2.4/b-html5-3.2.4/b-print-3.2.4/datatables.min.js" integrity="sha384-Iu6CLewDqmgceAxzv4BWJdtWh9+rD7h/AIijC7Kx907FlZU7fKaftSmNa61Kn5eL" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const get_data = new URLSearchParams();
+        get_data.append('get_users', ' ');
+        fetch('backend.php',{
+            method:'POST',
+             headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+              },
+           body: get_data
+            
+        }).then((response)=>{
+            return response.json()
+        }).then((result)=>{
+            console.log(result)
+            result.forEach(function(dd){
+                var name = dd['firstname']+' '+dd['lastname']
+               var row = '<tr class="row100"><td class="column100 column1" data-column="column1">'+name+ '</td><td class="column100 column2" data-column="column2">'+dd['email']+'</td><td class="column100 column3" data-column="column3">'+dd['address']+'</td><td class="column100 column4" data-column="column4">'+dd['kingschat']+'</td><td class="column100 column5" data-column="column5">'+dd['business_name']+'</td><td class="column100 column6" data-column="column6">'+dd['business_address']+'</td><td class="column100 column4" data-column="column4">'+dd['score']+'</td><td class="column100 column5" data-column="column3">'+readiness(dd['score'])+'</td><td class="column100 column6" data-column="column6">'+investmentStage(dd['score'])+'</td><td><img width="40%" height="auto" src="img/close-svgrepo-com.svg" onclick="deleteData('+dd['id']+')" /></td></tr>'
+               document.querySelector("table#table1 tbody").insertAdjacentHTML('beforeend',row)
+            })
+           
+        }).then(()=>{
+             $('#table1').DataTable(
+        {
+          buttons:  ['pdf', 'csv', 'excel']
+        }
+     );
+        }).catch(error => {
+        console.error('Fetch error:', error);
+      });
+    });
+    function readiness(score){
+     if(score<=50){
+        return "Not Investment Ready"
+     }else if(score>50 && score<=100)
+       return "Needs Substantial Work"
+      else if(score>100 && score<=130) 
+      return "Reasonable Readiness"
+     else if(score>130 && score<=165)
+     return "Highly Investment Ready"
+    }
+    function investmentStage(score){
+     if(score<=50){
+        return "Pre-Seed"
+     }else if(score>50 && score<=100)
+       return "Seed"
+      else if(score>100 && score<=130) 
+      return "Series A / B"
+     else if(score>130 && score<=165)
+     return "Series C / D / IPO Ready"
+    }
+    
+    function displayModal(title,subtitle,width,height,confirmFunc){
+        var modalhtml =
+         "<div class='e-modal'><div style='position:absolute;top:0;z-index:100;overflow:hidden;display:flex;align-items:center;justify-content:center; width:100vw;height:130vh;background-color:#0f01014c'><div class='e-modal-body' style='width:"+width+";height:"+height+"; border-radius:14px;background-color:white'><div class='animate__animated animate__fadeInUpBig' style='padding:20px;display:flex;flex-direction:column'><div style='font-weight:600;font-size:17px'>"+title+"</div><div style='font-size:13px'>"+subtitle+"</div><div class='row col-auto mx-auto py-3'><div class='btn btn-primary px-3 mx-3 ok' onclick='ok()'>Ok</div><div class='btn' onclick='closeModal()'>Cancel<div/></div></div><div><div></div>"
+         document.querySelector('body').style.overflow='hidden'
+         document.querySelector('body').insertAdjacentHTML('beforeend',modalhtml)
+         
+
+    }
+     
+    function closeModal(){
+      document.querySelector('body').style.overflow='unset'
+      document.querySelector('body').removeChild(document.querySelector('.e-modal'))
+    }
+     var chk = false
+
+      function ok(){
+        chk = true
+      }
+    function deleteData(id){
+          
+        var chkinterval = setInterval(function(){
+            console.log(chk)
+            if(chk){
+              doDelete(id)
+              clearInterval(chkinterval)
+            }
+        },1000)
+       displayModal('Delete:','Sure you want to delete this data? This process is irreversible.', '350px','150px')
+    }
+   function doDelete(id){
+       fetch('backend.php?delete='+id, {
+            method: 'DELETE',
+            }).then((response)=>{
+            return response.text()
+            }).then((result)=>{
+            alert(result)
+            window.location.reload()
+            })
+    }
+    //   setTimeout(function(){
+    //        $(".dt-layout-cell.dt-layout-start,.dt-layout-cell.dt-layout-end").css('visibility','hidden')
+    //     },500)
+    </script>
+</body>
+</html>
